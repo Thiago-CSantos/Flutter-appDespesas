@@ -1,4 +1,4 @@
-# expenses
+# APP Despesas
 
 A new Flutter project.
 
