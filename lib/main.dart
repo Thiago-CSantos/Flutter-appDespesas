@@ -31,8 +31,22 @@ class MyHomePage extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text('Versão Inicial!'),
+      body: Column(
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            color: Colors.purple.shade100,
+            child: const Card(
+              elevation: 7,
+              color: Colors.blue,
+              child: Text('Grafico'),
+            ),
+          ),
+          const Card(
+            elevation: 7,
+            child: Text('Lista de Transações'),
+          )
+        ],
       ),
     );
   }
