@@ -34,7 +34,6 @@ class MyHomePage extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Container(
-            width: double.infinity,
             color: Colors.purple.shade100,
             child: const Card(
               elevation: 7,
