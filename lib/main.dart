@@ -22,7 +22,7 @@ class ExpensesAPP extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
 
-  final List<Transaction> _transaction = [
+  final _transaction = [
     Transaction(
         id: 'T1',
         title: 'Novo tênis de corrida',
@@ -58,10 +58,15 @@ class MyHomePage extends StatelessWidget {
               child: Text('Grafico'),
             ),
           ),
-          const Card(
-            elevation: 7,
-            child: Text('Lista de Transações'),
-          )
+          Column(
+            children: <Widget>[
+              ..._transaction.map((transacao) {
+                return Card(
+                  child: Text(transacao.title),
+                );
+              }).toList()
+            ],
+          ),
         ],
       ),
     );
