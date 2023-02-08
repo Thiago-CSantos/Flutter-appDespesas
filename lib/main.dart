@@ -18,7 +18,7 @@ class ExpensesAPP extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        appBarTheme: AppBarTheme(backgroundColor: Colors.purple[700]),
+        primarySwatch: Colors.purple,
       ),
       home: const MyHomePage(),
     );
