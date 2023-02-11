@@ -18,7 +18,9 @@ class ExpensesAPP extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.purple, accentColor: Colors.amber),
+        fontFamily: 'Quicksand',
       ),
       home: const MyHomePage(),
     );
@@ -33,52 +35,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _transaction = [
-    Transaction(
-        id: 'T1',
-        title: 'Novo tênis de corrida',
-        value: 500.56,
-        date: DateTime.now()),
-    Transaction(
-      id: 'T2',
-      title: 'Nova camiseta',
-      value: 220.30,
-      date: DateTime.now(),
-    ),
-    Transaction(
-        id: 'T1',
-        title: 'Novo tênis de corrida',
-        value: 500.56,
-        date: DateTime.now()),
-    Transaction(
-      id: 'T2',
-      title: 'Nova camiseta',
-      value: 220.30,
-      date: DateTime.now(),
-    ),
-    Transaction(
-        id: 'T1',
-        title: 'Novo tênis de corrida',
-        value: 500.56,
-        date: DateTime.now()),
-    Transaction(
-      id: 'T2',
-      title: 'Nova camiseta',
-      value: 220.30,
-      date: DateTime.now(),
-    ),
-    Transaction(
-        id: 'T1',
-        title: 'Novo tênis de corrida',
-        value: 500.56,
-        date: DateTime.now()),
-    Transaction(
-      id: 'T2',
-      title: 'Nova camiseta',
-      value: 220.30,
-      date: DateTime.now(),
-    ),
-  ];
+  final List<Transaction> _transaction = [];
 
   addTrasacao(String title, double value) {
     final novaTransaction = Transaction(
@@ -109,7 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Despesas',
+          'Despesas Pessoais',
+          style: TextStyle(fontFamily: 'OpenSans', fontSize: 22),
           textAlign: TextAlign.center,
         ),
         centerTitle: true,
