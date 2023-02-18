@@ -33,45 +33,33 @@ class TransActionList extends StatelessWidget {
                 final tr = transaction[i];
 
                 return Card(
-                  child: Row(
-                    children: <Widget>[
-                      Container(
+                  elevation: 6,
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.purple[700],
+                      child: Padding(
                         padding: const EdgeInsets.all(10),
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 15,
-                          vertical: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.purple, width: 2),
-                        ),
-                        child: Text(
-                          'R\$ ${tr.value.toStringAsFixed(2)}',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.purple[600]),
+                        child: FittedBox(
+                          child: Text('R\$: ${tr.value}'),
                         ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            tr.title,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            DateFormat('dd/MM/yyyy').format(tr.date),
-                            style: const TextStyle(
-                                fontSize: 16,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
+                    ),
+                    title: Text(
+                      tr.title,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
                       ),
-                    ],
+                    ),
+                    subtitle: Text(
+                      DateFormat('dd/MM/yyyy').format(tr.date),
+                      style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 );
               }),
