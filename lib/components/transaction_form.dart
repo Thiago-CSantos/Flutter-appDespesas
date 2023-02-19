@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TransActionForm extends StatefulWidget {
   const TransActionForm(this.onSubmit, {super.key});
@@ -13,6 +14,26 @@ class _TransActionFormState extends State<TransActionForm> {
   final titleController = TextEditingController();
 
   final valueController = TextEditingController();
+
+  DateTime? _selectDate;
+
+  _selecionarData() {
+    var data = DateTime.now();
+    showDatePicker(
+      context: context, //esse context é recebido pela extends State
+      initialDate: DateTime.now(),
+      firstDate: DateTime(data.year),
+      lastDate: DateTime.now(),
+    ).then((depoisEscolher) {
+      if (depoisEscolher == null) {
+        return;
+      } else {
+        setState(() {
+          _selectDate = depoisEscolher;
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +61,15 @@ class _TransActionFormState extends State<TransActionForm> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const Text(
-                    'Nenhuma data selecionada',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                  Flexible(
+                    fit: FlexFit.tight,
+                    child: Text(
+                      _selectDate == null
+                          ? 'Nenhuma data selecionada'
+                          : 'Data: ${DateFormat('dd/MM/yyyy').format(_selectDate!)}',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   Container(
@@ -53,13 +79,13 @@ class _TransActionFormState extends State<TransActionForm> {
                         backgroundColor: MaterialStatePropertyAll(Colors.lime),
                         elevation: MaterialStatePropertyAll(1),
                       ),
-                      child: const Text(
+                      child: Text(
                         'Selecionar data',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: _selecionarData,
                     ),
                   ),
                 ],
