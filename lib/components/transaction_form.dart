@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 class TransActionForm extends StatefulWidget {
   const TransActionForm(this.onSubmit, {super.key});
 
-  final void Function(String, double) onSubmit;
+  final void Function(String, double, DateTime) onSubmit;
 
   @override
   State<TransActionForm> createState() => _TransActionFormState();
@@ -15,7 +15,7 @@ class _TransActionFormState extends State<TransActionForm> {
 
   final valueController = TextEditingController();
 
-  DateTime? _selectDate;
+  DateTime _selectDate = DateTime.now();
 
   _selecionarData() {
     var data = DateTime.now();
@@ -48,6 +48,11 @@ class _TransActionFormState extends State<TransActionForm> {
               decoration: const InputDecoration(
                 labelText: 'Titulo',
               ),
+              onSubmitted: (_) {
+                if (titleController.text.isEmpty) {
+                  return;
+                }
+              },
             ),
             TextField(
               keyboardType: TextInputType.number,
@@ -55,6 +60,12 @@ class _TransActionFormState extends State<TransActionForm> {
               decoration: const InputDecoration(
                 labelText: 'Valor (R\$)',
               ),
+              onSubmitted: (_) {
+                var value = double.tryParse(valueController.text) ?? 0;
+                if (value <= 0) {
+                  return;
+                }
+              },
             ),
             Container(
               height: 70,
@@ -79,13 +90,13 @@ class _TransActionFormState extends State<TransActionForm> {
                         backgroundColor: MaterialStatePropertyAll(Colors.lime),
                         elevation: MaterialStatePropertyAll(1),
                       ),
-                      child: Text(
+                      onPressed: _selecionarData,
+                      child: const Text(
                         'Selecionar data',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      onPressed: _selecionarData,
                     ),
                   ),
                 ],
@@ -103,7 +114,7 @@ class _TransActionFormState extends State<TransActionForm> {
                   onPressed: () {
                     String title = titleController.text;
                     double value = double.tryParse(valueController.text) ?? 0.0;
-                    widget.onSubmit(title, value);
+                    widget.onSubmit(title, value, _selectDate);
                   },
                   child: const Text('Nova Transação'),
                 ),

@@ -36,36 +36,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transaction = [
-    Transaction(
-        id: 'T0',
-        title: 'Antigo',
-        value: 905.88,
-        date: DateTime.now().subtract(const Duration(days: 45))),
-    Transaction(
-        id: 'T1',
-        title: 'Novo tênis de corrida',
-        value: 500.56,
-        date: DateTime.now().subtract(const Duration(days: 3))),
-    Transaction(
-      id: 'T2',
-      title: 'Nova camiseta',
-      value: 220.30,
-      date: DateTime.now().subtract(const Duration(days: 4)),
-    ),
-    Transaction(
-      id: 'T3',
-      title: 'Novo tênis',
-      value: 500.56,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 'T4',
-      title: 'Nova capa',
-      value: 220.30,
-      date: DateTime.now(),
-    ),
-  ];
+  final List<Transaction> _transaction = [];
 
   List<Transaction> get _recentTransactions {
     return _transaction.where((element) {
@@ -75,12 +46,12 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  addTrasacao(String title, double value) {
+  addTrasacao(String title, double value, DateTime data) {
     final novaTransaction = Transaction(
       id: Random().nextDouble().toString(),
       title: title,
       value: value,
-      date: DateTime.now(),
+      date: data,
     );
 
     setState(() {
@@ -88,6 +59,14 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
     Navigator.of(context).pop();
+  }
+
+  _deleteTransaction(String id) {
+    setState(() {
+      _transaction.removeWhere((element) {
+        return element.id == id;
+      });
+    });
   }
 
   _openTransactionFormModal(BuildContext context) {
@@ -123,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Chart(_recentTransactions),
-            TransActionList(_transaction),
+            TransActionList(_transaction, _deleteTransaction),
           ],
         ),
       ),

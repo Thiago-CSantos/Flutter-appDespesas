@@ -54,7 +54,9 @@ class Chart extends StatelessWidget {
               child: ChartBar(
                   label: e['day'] as String,
                   value: e['value'] as double,
-                  percentage: (e['value'] as double) / _valorTotalSemana),
+                  percentage: _valorTotalSemana == 0
+                      ? 0
+                      : (e['value'] as double) / _valorTotalSemana),
             );
           }).toList(),
         ),
