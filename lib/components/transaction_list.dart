@@ -14,17 +14,21 @@ class TransActionList extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.6,
       decoration: BoxDecoration(border: Border.all(color: Colors.black87)),
       child: transaction.isEmpty
-          ? Column(
-              children: [
-                const Text('Nenhuma transação cadastrada'),
-                SizedBox(
-                  height: 200,
-                  child: Image.asset(
-                    'assets/images/waiting.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ],
+          ? LayoutBuilder(
+              builder: (ctx, altura) {
+                return Column(
+                  children: [
+                    const Text('Nenhuma transação cadastrada'),
+                    SizedBox(
+                      height: altura.maxHeight * 0.6,
+                      child: Image.asset(
+                        'assets/images/waiting.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ],
+                );
+              },
             )
           : ListView.builder(
               itemCount: transaction.length,

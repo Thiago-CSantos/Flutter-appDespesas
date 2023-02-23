@@ -36,14 +36,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transaction = [
-    Transaction(
-      id: 'T1',
-      title: 'title',
-      value: 598.66,
-      date: DateTime.now(),
-    )
-  ];
+  final List<Transaction> _transaction = [];
+
+  bool _mostrarGrafico = false;
 
   List<Transaction> get _recentTransactions {
     return _transaction.where((element) {
@@ -87,6 +82,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    bool modoPaisagem =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
     final varAppBar = AppBar(
       title: const Text(
         'Despesas Pessoais',
@@ -95,6 +93,15 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       centerTitle: true,
       actions: <Widget>[
+        if (modoPaisagem == true)
+          IconButton(
+            icon: Icon(_mostrarGrafico ? Icons.list : Icons.show_chart),
+            onPressed: () {
+              setState(() {
+                _mostrarGrafico = !_mostrarGrafico;
+              });
+            },
+          ),
         IconButton(
           icon: const Icon(Icons.add),
           onPressed: () {
@@ -114,14 +121,31 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              height: calculandoResponsividade * 0.3,
-              child: Chart(_recentTransactions),
-            ),
-            Container(
-              height: calculandoResponsividade * 0.7,
-              child: TransActionList(_transaction, _deleteTransaction),
-            ),
+            if (modoPaisagem == true)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text('Exibir grafico'),
+                  // Switch(
+                  //   value: _mostrarGrafico,
+                  //   onChanged: (v) {
+                  //     setState(() {
+                  //       _mostrarGrafico = v;
+                  //     });
+                  //   },
+                  // ),
+                ],
+              ),
+            if (_mostrarGrafico == true || modoPaisagem == false)
+              Container(
+                height: calculandoResponsividade * (modoPaisagem ? 0.7 : 0.3),
+                child: Chart(_recentTransactions),
+              ),
+            if (_mostrarGrafico == false || modoPaisagem == false)
+              Container(
+                height: calculandoResponsividade * 0.7,
+                child: TransActionList(_transaction, _deleteTransaction),
+              ),
           ],
         ),
       ),
