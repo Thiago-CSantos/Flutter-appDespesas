@@ -42,7 +42,7 @@ class TransActionList extends StatelessWidget {
                       radius: 30,
                       backgroundColor: Colors.purple[700],
                       child: Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(0),
                         child: FittedBox(
                           child: Text('R\$: ${tr.value}'),
                         ),
@@ -63,12 +63,23 @@ class TransActionList extends StatelessWidget {
                           color: Colors.grey,
                           fontWeight: FontWeight.bold),
                     ),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete_sweep_outlined),
-                      onPressed: () {
-                        onRemove(tr.id);
-                      },
-                    ),
+                    trailing: MediaQuery.of(context).size.width > 500
+                        ? TextButton.icon(
+                            onPressed: () {
+                              onRemove(tr.id);
+                            },
+                            icon: const Icon(Icons.delete_sweep_outlined),
+                            label: Text(
+                              'Excluir',
+                              style: TextStyle(color: Colors.purple[900]),
+                            ),
+                          )
+                        : IconButton(
+                            icon: const Icon(Icons.delete_sweep_outlined),
+                            onPressed: () {
+                              onRemove(tr.id);
+                            },
+                          ),
                   ),
                 );
               }),
