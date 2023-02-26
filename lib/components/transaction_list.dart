@@ -12,13 +12,15 @@ class TransActionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.6,
-      decoration: BoxDecoration(border: Border.all(color: Colors.black87)),
       child: transaction.isEmpty
           ? LayoutBuilder(
               builder: (ctx, altura) {
                 return Column(
                   children: [
                     const Text('Nenhuma transação cadastrada'),
+                    SizedBox(
+                      height: altura.maxHeight * 0.01,
+                    ),
                     SizedBox(
                       height: altura.maxHeight * 0.6,
                       child: Image.asset(

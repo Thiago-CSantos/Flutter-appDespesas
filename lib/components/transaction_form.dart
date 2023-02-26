@@ -89,8 +89,8 @@ class _TransActionFormState extends State<TransActionForm> {
                       margin: const EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0),
                       child: TextButton(
                         style: const ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(Colors.lime),
+                          backgroundColor: MaterialStatePropertyAll(
+                              Color.fromRGBO(238, 238, 238, 1)),
                           elevation: MaterialStatePropertyAll(1),
                         ),
                         onPressed: _selecionarData,

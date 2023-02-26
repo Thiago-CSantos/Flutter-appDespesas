@@ -18,9 +18,10 @@ class ExpensesAPP extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
-            primarySwatch: Colors.purple, accentColor: Colors.amber),
+            primarySwatch: Colors.purple, accentColor: Colors.purple[700]),
         fontFamily: 'Quicksand',
       ),
       home: const MyHomePage(),
@@ -125,7 +126,6 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  Text('Exibir grafico'),
                   // Switch(
                   //   value: _mostrarGrafico,
                   //   onChanged: (v) {
@@ -143,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             if (_mostrarGrafico == false || modoPaisagem == false)
               Container(
-                height: calculandoResponsividade * 0.7,
+                height: calculandoResponsividade * (modoPaisagem ? 1 : 0.7),
                 child: TransActionList(_transaction, _deleteTransaction),
               ),
           ],
