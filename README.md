@@ -8,9 +8,13 @@ Uma aplicação `Mobile` em `Flutter` construída durante as aulas [Aprenda Flut
 Com um relacionamento entre um **Grafico**, **Lista**, **Valor(R$)**. Há aplicação consiste em demonstrar todo o meu aprendizado em Flutter e Dart.
 
 # Dashboard
-- Tabelas
-- ![tabelas Dashboard](https://github.com/Thiago-CSantos/assets/blob/main/tabelasDashbord.png)
-
+- Telas
+<img src ="https://github.com/Thiago-CSantos/assets/blob/main/expenses1.jpeg" height="300vh"/>
+<img src ="https://github.com/Thiago-CSantos/assets/blob/main/expenses2.jpeg" height="300vh"/>
+<img src ="https://github.com/Thiago-CSantos/assets/blob/main/expenses3.jpeg" width="400vw"/>
+<img src ="https://github.com/Thiago-CSantos/assets/blob/main/expenses4.jpeg" width="400vw"/>
+- Video
+![](https://github.com/Thiago-CSantos/assets/blob/main/appDespesasPessoais.mp4)
 ## Postman
 - Atualizar usuario
 ![](https://github.com/Thiago-CSantos/assets/blob/b4fad29694c8a16a0019e86da8a038161904a092/putPostmanusers1.png)
