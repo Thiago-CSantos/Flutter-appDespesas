@@ -1,5 +1,5 @@
 
-# WorkShop - Spring Boot 
+# Despesas Pessoais - Flutter 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/Thiago-CSantos/Flutter-appDespesas/blob/main/LICENCE)
 
 # Sobre o projeto
@@ -13,17 +13,23 @@ Com um relacionamento entre um **Grafico**, **Lista**, **Valor(R$)**. Há aplica
 <img src ="https://github.com/Thiago-CSantos/assets/blob/main/expenses2.jpeg" height="300vh"/>
 <img src ="https://github.com/Thiago-CSantos/assets/blob/main/expenses3.jpeg" width="400vw"/>
 <img src ="https://github.com/Thiago-CSantos/assets/blob/main/expenses4.jpeg" width="400vw"/>
-- Video
-![](https://github.com/Thiago-CSantos/assets/blob/main/appDespesasPessoais.mp4)
-## Postman
-- Atualizar usuario
-![](https://github.com/Thiago-CSantos/assets/blob/b4fad29694c8a16a0019e86da8a038161904a092/putPostmanusers1.png)
+ <h3>Video<h3/>
+<p>
+<img height="600" src="https://github.com/Thiago-CSantos/Flutter-appDespesas/blob/main/Videos_imagens/appDespesasPessoais.gif"/>
+</p>
 
-## Modelo de domínio
-![Modelo de domínio](https://github.com/Thiago-CSantos/assets/blob/main/modeloDominio.png)
+# Tecnologias utilizadas
+## Mobile(Flutter)
+- Flutter
+- Dart
+- Visual Studio Code
+- Android Studio(Emulator)
 
-### Instancia de dominio
-![Instancia de dominio](https://github.com/Thiago-CSantos/assets/blob/main/instanciaDominio.png)
+# Autor
+Thaigo Carretero dos Santos
+
+https://www.linkedin.com/in/thiago-santos-thc/
+
 
 
 <!-- https://wmazoni-sds1.netlify.app
@@ -43,12 +49,7 @@ A aplicação consiste em uma pesquisa de preferência de games, onde os dados s
 ## Modelo conceitual
 ![Modelo Conceitual](https://github.com/acenelio/assets/raw/main/sds1/modelo-conceitual.png)
 -->
-# Tecnologias utilizadas
-## Mobile(Flutter)
-- Flutter
-- Dart
-- Visual Studio Code
-- Android Studio
+
 
 <!-- ## Front end
 - HTML / CSS / JS / TypeScript
@@ -94,9 +95,5 @@ yarn install
 yarn start
 ```
 -->
-# Autor
 
-Thaigo Carretero dos Santos
-
-https://www.linkedin.com/in/thiago-santos-thc/
 
